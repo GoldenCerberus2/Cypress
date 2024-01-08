@@ -1,10 +1,13 @@
 /// <reference types="cypress"/>
 
+//TODO #1 Apply Page Object Model to the test
+
 it("IndexTesting", function () {
+    //Visit site
     cy.visit(
         "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
     );
-
+    //Login
     cy.get(
         ":nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input"
     ).type("Admin");
@@ -15,6 +18,7 @@ it("IndexTesting", function () {
 
     cy.get(".oxd-button").click();
 
+    // test sidebar
     cy.get(":nth-child(1) > .oxd-main-menu-item").click();
     cy.get(":nth-child(2) > .oxd-main-menu-item").click();
     cy.get(":nth-child(3) > .oxd-main-menu-item").click();
@@ -25,13 +29,13 @@ it("IndexTesting", function () {
     cy.get(":nth-child(8) > .oxd-main-menu-item").click();
     cy.get(":nth-child(9) > .oxd-main-menu-item").click();
     cy.get(":nth-child(10) > .oxd-main-menu-item").click();
-
+    //get admin acces
     cy.get(
         ":nth-child(6) > .oxd-input-group > :nth-child(2) > .oxd-input"
     ).type("admin123");
 
     cy.get(".oxd-button--secondary").click();
-
+    //sidebar testing continues
     cy.get(":nth-child(11) > .oxd-main-menu-item").click();
 
     cy.get(":nth-child(12) > .oxd-main-menu-item").click();
