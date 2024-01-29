@@ -22,21 +22,67 @@ export class orange {
     test_sidebar() {
         // test sidebar
         cy.get(":nth-child(1) > .oxd-main-menu-item").click();
+        this.assert_page(
+            "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers"
+        );
+
         cy.get(":nth-child(2) > .oxd-main-menu-item").click();
+        this.assert_page(
+            "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList"
+        );
+
         cy.get(":nth-child(3) > .oxd-main-menu-item").click();
+        this.assert_page(
+            "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveList"
+        );
+
         cy.get(":nth-child(4) > .oxd-main-menu-item").click();
+        this.assert_page(
+            "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewEmployeeTimesheet"
+        );
+
         cy.get(":nth-child(5) > .oxd-main-menu-item").click();
+        this.assert_page(
+            "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidates"
+        );
+
         cy.get(":nth-child(6) > .oxd-main-menu-item").click();
+        this.assert_page(
+            "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/7"
+        );
+
         cy.get(":nth-child(7) > .oxd-main-menu-item").click();
+        this.assert_page(
+            "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchEvaluatePerformanceReview"
+        );
+
         cy.get(":nth-child(8) > .oxd-main-menu-item").click();
+        this.assert_page(
+            "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index"
+        );
+
         cy.get(":nth-child(9) > .oxd-main-menu-item").click();
+        this.assert_page(
+            "https://opensource-demo.orangehrmlive.com/web/index.php/directory/viewDirectory"
+        );
+
         cy.get(":nth-child(10) > .oxd-main-menu-item").click();
         //get admin access
         this.admin_access("admin123");
+        this.assert_page(
+            "https://opensource-demo.orangehrmlive.com/web/index.php/maintenance/purgeEmployee"
+        );
+
         //sidebar testing continues
         cy.get(":nth-child(11) > .oxd-main-menu-item").click();
+        this.assert_page(
+            "https://opensource-demo.orangehrmlive.com/web/index.php/claim/viewAssignClaim"
+        );
 
         cy.get(":nth-child(12) > .oxd-main-menu-item").click();
+        this.assert_page(
+            "https://opensource-demo.orangehrmlive.com/web/index.php/buzz/viewBuzz"
+        );
     }
 
     admin_access(password2) {
@@ -64,5 +110,9 @@ export class orange {
         cy.wait(4000);
         cy.get(".--visited > .oxd-topbar-body-nav-tab-item").click();
         cy.contains("Janusz Krzysztof");
+    }
+
+    assert_page(page_to_test) {
+        cy.url().should("eq", page_to_test);
     }
 }
