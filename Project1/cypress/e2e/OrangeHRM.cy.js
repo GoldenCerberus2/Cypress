@@ -1,7 +1,5 @@
 /// <reference types="cypress"/>
 
-//TODO #1 Apply Page Object Model to the test
-
 import { orange } from "../Pages/orange";
 
 const test = new orange();
